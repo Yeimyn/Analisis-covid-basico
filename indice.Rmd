@@ -95,6 +95,39 @@ axis(
   side = 2,
   covid$fallecidos,
   labels = TRUE,  
-  at = seq(0, 10000, by = 20000),
+  at = seq(0, 10000, by = 2000),
   cex.axis = .7)
+```
+
+
+##### Otros  
+
+```{r casos-otros-acumulados}
+plot(x = covid$FECHA,
+     y = covid$otros,
+     type = "l",
+     xaxt = "n",
+     yaxt = "n",
+     main = "casos otros acumulados de COVID-19 en Costa Rica",
+     xlab = "Fecha",
+     ylab = "Casos",
+     col = "blue")
+
+# Casos activos
+lines(covid$FECHA, covid$activos, col ="red")
+
+# Casos recuperados 
+lines(covid$FECHA, covid$RECUPERADOS, col ="green")
+
+# casos fallecidos  
+lines(covid$FECHA, covid$fallecidos, col ="black")
+
+# Leyenda
+legend(
+  x = "top",
+  inset = 0.03,
+  legend = c("Positivos", "Activos", "Recuperados", "Fallecidos"),
+  col = c("blue", "red", "green", "black"),
+  lty = 1,
+  cex = 0.7)
 ```
